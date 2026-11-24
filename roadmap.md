@@ -3,3 +3,4 @@
 - [x] Add local appointment validation, summary, reset, and contact links.
 - [x] Verify business rules and desktop/mobile interactions.
 - [x] Include the user-supplied CUCEI logo with its original proportions and replaceable local image path.
+- [x] Show average reference prices and typical ranges in the service cards.

@@ -3,11 +3,11 @@ export const address = 'Lituania 30-B, Col. París Nueva Orleans, C.P. 45200, Gu
 export const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`;
 export const whatsappUrl = `https://wa.me/523312976834?text=${encodeURIComponent('Hola, me gustaría solicitar información para agendar una cita en NAJANA STUDIO.')}`;
 export const services = [
-  { id: 'corte', name: 'Estilismo y Corte', description: 'Renueva tu imagen con cortes y estilizados que resaltan tu personalidad y se adaptan a tu estilo.', duration: '45–60 min' },
-  { id: 'color', name: 'Colorimetría y Tratamientos Capilares', description: 'Dale nueva vida a tu cabello con opciones de color, técnicas de iluminación y tratamientos para su cuidado.', duration: '90–180 min' },
-  { id: 'unas', name: 'Manicure y Pedicure', description: 'Cuida tus manos y pies con diseños de uñas, acabados elegantes y detalles que complementan tu estilo.', duration: '45–90 min' },
-  { id: 'cejas', name: 'Diseño de Cejas y Pestañas', description: 'Realza tu mirada con servicios de diseño y cuidado de cejas y pestañas.', duration: '30–60 min' },
-  { id: 'maquillaje', name: 'Maquillaje Social', description: 'Luce espectacular en tus eventos especiales con maquillaje adaptado a tu personalidad y ocasión.', duration: '60–90 min' },
+  { id: 'corte', name: 'Estilismo y Corte', description: 'Renueva tu imagen con cortes y estilizados que resaltan tu personalidad y se adaptan a tu estilo.', duration: '45–60 min', price: 400, priceRange: '$250–$650' },
+  { id: 'color', name: 'Colorimetría y Tratamientos Capilares', description: 'Dale nueva vida a tu cabello con opciones de color, técnicas de iluminación y tratamientos para su cuidado.', duration: '90–180 min', price: 900, priceRange: '$500–$1,500' },
+  { id: 'unas', name: 'Manicure y Pedicure', description: 'Cuida tus manos y pies con diseños de uñas, acabados elegantes y detalles que complementan tu estilo.', duration: '45–90 min', price: 450, priceRange: '$300–$600' },
+  { id: 'cejas', name: 'Diseño de Cejas y Pestañas', description: 'Realza tu mirada con servicios de diseño y cuidado de cejas y pestañas.', duration: '30–60 min', price: 450, priceRange: '$250–$700' },
+  { id: 'maquillaje', name: 'Maquillaje Social', description: 'Luce espectacular en tus eventos especiales con maquillaje adaptado a tu personalidad y ocasión.', duration: '60–90 min', price: 800, priceRange: '$600–$1,200' },
 ] as const;
 export function localToday(now = new Date()) {
   return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
@@ -24,6 +24,9 @@ export function timeOptions(date: string) {
 export function timeLabel(time: string) {
   const hour = Number(time.split(':')[0]);
   return `${hour % 12 || 12}:${time.split(':')[1] ?? '00'} ${hour >= 12 ? 'PM' : 'AM'}`;
+}
+export function priceLabel(price: number) {
+  return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(price);
 }
 export function dateLabel(date: string) {
   return new Date(`${date}T12:00:00`).toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' });
